@@ -1,0 +1,6 @@
+numpy
+yfinance
+langchain
+langchain-openai
+pandas
+matplotlib
