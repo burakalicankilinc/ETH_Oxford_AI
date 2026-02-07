@@ -1,54 +1,50 @@
 # EFFECTS.md
 
-## 1. I/O Boundary (Effect Inventory)
-The system is authorized to interact with the following external resources and non-deterministic factors:
+## 1. I/O Boundary
 
-* **Network (External APIs):**
-    * **Yahoo Finance (`yfinance`):** Extracts historical ticker price data.
-    * **Valyu API:** Uses ValyU AI to conduct web searches for news and researches on the stock, by considering macroeconomic trends and industry-specific information. 
-    * **GPT Generative AI:** Uses the `gpt-4.1` model for reasoning and analysis of the stock, given necessary tools/information.
-* **Storage (File System):**
-    * **Image Storage:** The tool mlModel uses Facebook prophet to forecast prices, while also plotting graphs, saving them to the local disk as `.png` files for analyis.
-* **Entropy (Randomness):**
-    * **Stochastic Modeling:** Uses numpy's normal distribution model, `np.random.normal`, to generate paths for extensive Monte Carlo simulations in the Brownian model.
-    * **LLM Sampling:** Operates with a `temperature` of `1.0`, resulting in non-deterministic text outputs.
-* **Environment:**
-    * **Secrets Management:** While operating `noise tools`, retrieves the `VALYU_API_KEY` from system environment variables.
+* **Network:**
+    * Extracts historical ticker price data.
+    * Uses an AI specialised in searching news and articles to gather information about the stock.  to conduct web searches for news and research on the stock, by considering macroeconomic trends and industry-specific information. 
+    * Uses another reasoning model for data analysis and final prediction.
+* **Storage:**
+    * One of the tools plots graphs after predicting the stock prices, saving them to the local disk as `.png` files for further analysis.
+* **Entropy**
+    * Uses numpy's normal distribution model, `np.random.normal`, to generate paths for Monte Carlo simulations.
+    * The reasoning model operates with a medium `temperature` of `1.0`, resulting in higher non-deterministic text outputs compared to lower values.
 
 
 ---
 
-## 2. Effect Definitions (Code References)
-The following code symbols define the boundaries and provide the capabilities:
+## 2. Effect Definitions
 
-* **Tool Definitions:**
-    * `mlModel`: Entrypoint for Prophet-based time-series forecasting and `.png` file output.
-    * `brownianModel`: Entrypoint for Geometric Brownian Motion simulations and `yfinance` data retrieval.
-    * `generalInfo` / `specificInfo`: Entrypoints for external research via the `Valyu` client.
-* **Agent Interfaces:**
-    * `trend_agent`: A specialized agent wrapping quantitative tools (`mlModel`, `brownianModel`).
-    * `noise_agent`: A specialized agent wrapping search and sentiment tools.
-* **State Management:**
-    * `AgentState`: A `TypedDict` that tracks the user `query` and aggregates a list of `results` strings.
+* **Network:**
+    * Yahoo Finance (`yfinance`) for fetching price data.
+    * ValyU AI to conduct web searches for news and research on the stock, categorising information into macroeconomic and industry-specific areas. 
+    * The `gpt-4.1` model is used for reasoning and analysis of the stock, given the necessary tools/information and providing the final answer & prediction.
+* **Storage:**
+    * The `@tool` mlModel uses Facebook Prophet to forecast prices, and also saves the plotted graphs to the local disk as `.png` files.
+* **Entropy**
+    * `np.random.normal` is used in the mlModel to generate random paths.
+    * The `gpt-4.1` model operates with a `temperature` of `1.0`, a medium value which corresponds to non-deterministic text outputs.
 
 ---
 
-## 3. Pure Core (Business Logic)
-The deterministic internal logic of the application manages how information is transformed and routed.
+## 3. Pure Core
 
 * **Information Flow:**
-    1.  **Routing:** The system uses `route_query` to parse the user request into a `RouteSchema`, determining which specialized agents to "hire".
-    2.  **Orchestration:** The graph executes `trend_node` and `noise_node` (quant vs. research) based on the routing decision.
-    3.  **Synthesis:** The `aggregator` node merges independent analysis strings into a final investment memo using the LLM.
+    1.  **Routing:** The system is initialised by using `route_query` to transform user requests into `RouteSchema`, in which it determines which specialised agents to "hire".
+    2.  **Orchestration:** Depending on the routing decision, the graph would execute the corresponding `trend_node` and `noise_node` (quant vs. research), each with a set of previously defined tools. 
+    3.  **Synthesis:** The `aggregator` node merges independent analysis strings into a final investment memo using the LLM. 
 * **Main Execution Paths:**
     * **Quant Path:** Historical Data → Statistical Simulation/Prophet Training → Price Prediction.
-    * **Research Path:** News Search → Snippet Extraction → Sentiment Summary.
+    * **Research Path:** News/Research Extraction → URL/Snippet Extraction → Sentiment Summary.
 
 ---
 
-## 4. Runtime (What you used)
+## 4. Runtime
 * **Language:** Python 3.
 * **Effect Library/Runtime:** **LangGraph** (StateGraph) for workflow orchestration and **LangChain** for LLM/Tool abstraction.
 * **Runtime Style:**
-    * **Graph-Based:** The application is compiled into a `StateGraph` and executed via `app.stream()`.
-    * **Dynamic Dispatch:** Uses `conditional_edges` at the `START` node to determine the execution path at runtime based on the input query.
+    * The application is compiled into a `StateGraph` and launched via `app.stream()`.
+    * Uses `conditional_edges` at the `START` node to determine the execution path at runtime based on the input query.
+
