@@ -6,16 +6,15 @@ The system is authorized to interact with the following external resources and n
 * **Network (External APIs):**
     * **Yahoo Finance (`yfinance`):** Extracts historical ticker price data.
     * **Valyu API:** Uses ValyU AI to conduct web searches for news and researches on the stock, by considering macroeconomic trends and industry-specific information. 
-    * **Google Generative AI:** Uses the `gemini-2.5-flash` model for reasoning and analysis of the stock, given necessary tools/information.
+    * **GPT Generative AI:** Uses the `gpt-4.1` model for reasoning and analysis of the stock, given necessary tools/information.
 * **Storage (File System):**
-    * **Image Storage:** The tool mlModel uses Facebook prophet to forecast prices, while also plotting a graph, saving it to the local disk as `.png` files for analyis.
+    * **Image Storage:** The tool mlModel uses Facebook prophet to forecast prices, while also plotting graphs, saving them to the local disk as `.png` files for analyis.
 * **Entropy (Randomness):**
-    * **Stochastic Modeling:** Uses `np.random.normal` to generate paths for Monte Carlo simulations in the Brownian model.
+    * **Stochastic Modeling:** Uses numpy's normal distribution model, `np.random.normal`, to generate paths for extensive Monte Carlo simulations in the Brownian model.
     * **LLM Sampling:** Operates with a `temperature` of `1.0`, resulting in non-deterministic text outputs.
 * **Environment:**
-    * **Secrets Management:** Retrieves the `VALYU_API_KEY` from system environment variables.
-* **Observability:**
-    * **Console Output:** Logs execution states, trend directions, and final investment memos to `stdout`.
+    * **Secrets Management:** While operating `noise tools`, retrieves the `VALYU_API_KEY` from system environment variables.
+
 
 ---
 
