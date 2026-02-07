@@ -1,39 +1,58 @@
 import numpy as np
-from effects_system import GetMarketData, SaveToAuditLog, LogInfo
+import pandas as pd
+from effects_system import GetMarketData, RunProphet, ValyuSearch, SaveToAuditLog, LogInfo
 
-def brownian_forecast_workflow(ticker: str):
-    """
-    Pure Generator. Describes the workflow but performs NO actions.
-    """
-    # 1. Ask Runtime for Data
-    yield LogInfo(f"Starting analysis for {ticker}")
+# --- WORKFLOW 1: BROWNIAN (Same as before) ---
+def brownian_workflow(ticker: str):
+    yield LogInfo(f"Starting Brownian for {ticker}")
     prices = yield GetMarketData(ticker)
     
-    if prices is None or len(prices) < 2:
-        return "Error: Insufficient data."
-
-    # 2. Pure Math (Deterministic)
+    if prices is None or len(prices) < 2: return "Error: No data"
+    
+    # Pure Math...
     daily_returns = ((prices / prices.shift(1)) - 1).dropna()
     mu = np.mean(daily_returns)
     sigma = np.std(daily_returns)
-    
-    annual_drift = mu * 252
     annual_vol = sigma * np.sqrt(252)
     
-    last_price = prices.iloc[-1]
-    prediction = last_price * np.exp(annual_drift * (30/252))
+    yield SaveToAuditLog(ticker, {"volatility": annual_vol}, "Brownian")
+    return f"Brownian Volatility: {annual_vol:.2%}"
+
+# --- WORKFLOW 2: PROPHET (Machine Learning) ---
+def prophet_workflow(ticker: str):
+    """Pure Logic for ML Tool"""
+    yield LogInfo(f"Starting Prophet ML for {ticker}")
     
-    # 3. Ask Runtime to Save
-    payload = {
-        "start_price": float(last_price),
-        "target_price": float(prediction),
-        "volatility": float(annual_vol)
-    }
-    yield SaveToAuditLog(ticker, payload, "BrownianMotion")
+    # 1. Get Data
+    prices = yield GetMarketData(ticker, years=2)
+    if prices is None or len(prices) < 10: return "Error: Not enough data for ML"
     
-    # 4. Return Summary to Agent
-    return (f"Brownian Motion Analysis for {ticker}:\n"
-            f"- Volatility: {annual_vol:.2%}\n"
-            f"- Drift: {annual_drift:.2%}\n"
-            f"- 30-Day Target: ${prediction:.2f}\n"
-            f"(Verified: Result persisted to audit log).")
+    # 2. Run Prophet (Delegate complex fit to Runtime)
+    forecast = yield RunProphet(history_df=prices, days=30)
+    
+    # 3. Process Result (Pure)
+    future_data = forecast.tail(30)
+    latest_pred = forecast.iloc[-1]['yhat']
+    trend = "UP" if latest_pred > prices.iloc[-1] else "DOWN"
+    
+    # 4. Save
+    yield SaveToAuditLog(ticker, {"trend": trend, "target": latest_pred}, "Prophet")
+    
+    # 5. Return Formatted String
+    return (f"Prophet ML Analysis for {ticker}:\n"
+            f"Trend: {trend}\n"
+            f"30-Day Target: ${latest_pred:.2f}\n"
+            f"(Verified: ML Run logged).")
+
+# --- WORKFLOW 3: SEARCH (Research Agent) ---
+def search_workflow(query: str):
+    """Pure Logic for News Search"""
+    yield LogInfo(f"Searching Valyu for: {query}")
+    
+    # 1. Execute Search
+    results = yield ValyuSearch(query)
+    
+    # 2. Save
+    yield SaveToAuditLog("SEARCH_QUERY", {"query": query}, "ValyuSearch")
+    
+    return f"Search Results:\n{results[:500]}..." # Return first 500 chars
