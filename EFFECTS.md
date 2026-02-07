@@ -4,11 +4,11 @@
 The system is authorized to interact with the following external resources and non-deterministic factors:
 
 * **Network (External APIs):**
-    * **Yahoo Finance (`yfinance`):** Fetches historical price data and ticker history.
-    * **Valyu API:** Conducts web searches for news and proprietary research data using an external service.
-    * **Google Generative AI:** Interfaces with the `gemini-2.5-flash` model for reasoning and synthesis.
+    * **Yahoo Finance (`yfinance`):** Extracts historical ticker price data.
+    * **Valyu API:** Uses ValyU AI to conduct web searches for news and researches on the stock, by considering macroeconomic trends and industry-specific information. 
+    * **Google Generative AI:** Uses the `gemini-2.5-flash` model for reasoning and analysis of the stock, given necessary tools/information.
 * **Storage (File System):**
-    * **Image Generation:** Writes forecast plots to the local disk as `.png` files via Matplotlib.
+    * **Image Storage:** The tool mlModel uses Facebook prophet to forecast prices, while also plotting a graph, saving it to the local disk as `.png` files for analyis.
 * **Entropy (Randomness):**
     * **Stochastic Modeling:** Uses `np.random.normal` to generate paths for Monte Carlo simulations in the Brownian model.
     * **LLM Sampling:** Operates with a `temperature` of `1.0`, resulting in non-deterministic text outputs.
