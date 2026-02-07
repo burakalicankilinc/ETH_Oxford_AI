@@ -1,0 +1,100 @@
+2026-02-07 01:19:08,055 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:11,117 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:14,201 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:17,289 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:20,362 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:23,528 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:26,700 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:29,864 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:33,009 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:36,128 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:39,275 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:42,431 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:45,599 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:48,776 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:51,931 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:55,071 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:19:58,218 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:20:01,379 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:20:04,534 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
+2026-02-07 01:20:07,658 - __main__ - INFO - MCP Server script started
+Traceback (most recent call last):
+  File "/Users/philipkaloudis/Documents/ETH_Oxford_AI/MCP/mcp_server.py", line 19, in <module>
+    from mcp.server.fastmcp import FastMCP
+ModuleNotFoundError: No module named 'mcp'
